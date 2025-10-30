@@ -1,0 +1,158 @@
+metadata:
+  version: 1
+  generated: 2024-06-09
+  sources:
+    - name: "DOF - Aviso automático para la importación de productos siderúrgicos"
+      url: "https://www.dof.gob.mx"  # Referencia general, ver referencias específicas por código
+    - name: "DOF - Aviso automático para la importación de productos textiles y confecciones"
+      url: "https://www.dof.gob.mx"
+    - name: "DOF - Aviso automático para la importación de productos de calzado"
+      url: "https://www.dof.gob.mx"
+    - name: "DOF - Aviso automático para la importación de productos de aluminio"
+      url: "https://www.dof.gob.mx"
+industries:
+  - key: acero_siderurgico
+    name: "Siderúrgica"
+    sector: "Metales"
+    description: "Fabricación, transformación y comercialización de productos laminados y derivados del acero."
+    notice_type: "Aviso automático de importación de productos siderúrgicos"
+    notes: "Los avisos automáticos aplican para mercancías listadas en el Anexo 2.2.1 fracción II del Acuerdo de la Secretaría de Economía."
+    hts_entries:
+      - code: "7208.51.01"
+        description: "Productos laminados planos de hierro o acero sin alear, de anchura >= 600 mm, en bobinas, en caliente, de espesor > 10 mm"
+        requires_notice: true
+        rule_reference: "DOF 26/12/2020 - Aviso automático siderúrgico"
+        comments: "Requiere aviso por tratarse de lámina en caliente dentro del listado."
+      - code: "7208.90.99"
+        description: "Los demás productos laminados planos de hierro o acero sin alear, de anchura >= 600 mm"
+        requires_notice: true
+        rule_reference: "DOF 26/12/2020 - Aviso automático siderúrgico"
+        comments: "Cualquier código residual dentro del capítulo 72 indicado requiere aviso."
+      - code: "7210.49.01"
+        description: "Productos laminados planos de hierro o acero sin alear, de anchura >= 600 mm, recubiertos o chapados de cinc"
+        requires_notice: true
+        rule_reference: "DOF 26/12/2020 - Aviso automático siderúrgico"
+        comments: "Lámina galvanizada incluida expresamente en el aviso."
+      - code: "7213.91.99"
+        description: "Alambres de hierro o acero sin alear, simplemente trefilados"
+        requires_notice: true
+        rule_reference: "DOF 26/12/2020 - Aviso automático siderúrgico"
+        comments: "Productos largos considerados sensibles por la autoridad."
+      - code: "7225.40.99"
+        description: "Los demás productos laminados planos de los demás aceros aleados, de anchura >= 600 mm"
+        requires_notice: true
+        rule_reference: "DOF 26/12/2020 - Aviso automático siderúrgico"
+        comments: "Acero aleado laminado en caliente incluido en el anexo."
+      - code: "7306.61.99"
+        description: "Tubos y perfiles huecos, de hierro o acero, soldados, circulares, diámetro exterior <= 168,3 mm"
+        requires_notice: true
+        rule_reference: "DOF 26/12/2020 - Aviso automático siderúrgico"
+        comments: "Tubos soldados contemplados en el aviso."
+      - code: "7326.90.90"
+        description: "Las demás manufacturas de hierro o acero"
+        requires_notice: false
+        rule_reference: "N/A"
+        comments: "Mercancía genérica no listada en el aviso automático."
+  - key: textil_confeccion
+    name: "Textil y Confección"
+    sector: "Manufactura"
+    description: "Producción de telas, prendas de vestir y artículos textiles confeccionados."
+    notice_type: "Aviso automático de importación de productos textiles y confeccionados"
+    notes: "El aviso aplica para operaciones por encima de los umbrales establecidos en el acuerdo correspondiente."
+    hts_entries:
+      - code: "6006.32.01"
+        description: "Tejidos de punto, de anchura superior a 30 cm, que contengan >= 5% de filamentos de elastómeros"
+        requires_notice: true
+        rule_reference: "DOF 21/10/2022 - Aviso automático textil"
+        comments: "Telas elásticas incluidas en el listado del aviso."
+      - code: "6109.10.99"
+        description: "Camisetas interiores y camisetas de punto, de algodón"
+        requires_notice: true
+        rule_reference: "DOF 21/10/2022 - Aviso automático textil"
+        comments: "Prendas básicas sujetas a aviso por su sensibilidad."
+      - code: "6203.42.06"
+        description: "Pantalones para hombres o niños, de algodón"
+        requires_notice: true
+        rule_reference: "DOF 21/10/2022 - Aviso automático textil"
+        comments: "Prendas confeccionadas listadas en el acuerdo."
+      - code: "6217.10.99"
+        description: "Los demás accesorios confeccionados de prendas de vestir"
+        requires_notice: false
+        rule_reference: "N/A"
+        comments: "Accesorios no incluidos en los anexos del aviso."
+  - key: calzado
+    name: "Calzado"
+    sector: "Manufactura"
+    description: "Producción e importación de calzado de diversas materias."
+    notice_type: "Aviso automático de importación de calzado"
+    notes: "Aplicable a importaciones definitivas conforme al acuerdo publicado por la Secretaría de Economía."
+    hts_entries:
+      - code: "6403.59.99"
+        description: "Calzado con suela exterior de caucho, plástico, cuero natural o regenerado y parte superior de cuero natural"
+        requires_notice: true
+        rule_reference: "DOF 27/01/2023 - Aviso automático calzado"
+        comments: "Calzado de cuero sujeto a aviso por prácticas desleales."
+      - code: "6402.99.90"
+        description: "Los demás calzados con suela y parte superior de caucho o plástico"
+        requires_notice: true
+        rule_reference: "DOF 27/01/2023 - Aviso automático calzado"
+        comments: "Calzado plástico listado en el acuerdo."
+      - code: "6406.10.99"
+        description: "Partes de calzado, partes superiores y sus partes"
+        requires_notice: true
+        rule_reference: "DOF 27/01/2023 - Aviso automático calzado"
+        comments: "Partes consideradas críticas para la cadena de suministro."
+      - code: "6405.90.99"
+        description: "Los demás calzados"
+        requires_notice: false
+        rule_reference: "N/A"
+        comments: "Clasificación residual no cubierta por el aviso."
+  - key: aluminio
+    name: "Aluminio y Derivados"
+    sector: "Metales"
+    description: "Fabricación e importación de láminas, perfiles y manufacturas de aluminio."
+    notice_type: "Aviso automático de importación de productos de aluminio"
+    notes: "Se basa en el acuerdo publicado en el DOF el 05/02/2024."
+    hts_entries:
+      - code: "7606.12.99"
+        description: "Láminas y tiras de aluminio, de espesor > 0,2 mm, simplemente laminadas en frío"
+        requires_notice: true
+        rule_reference: "DOF 05/02/2024 - Aviso automático aluminio"
+        comments: "Lámina en frío incluida en el anexo."
+      - code: "7607.11.01"
+        description: "Hojas y tiras delgadas de aluminio, simplemente laminadas"
+        requires_notice: true
+        rule_reference: "DOF 05/02/2024 - Aviso automático aluminio"
+        comments: "Productos planos susceptibles de aviso."
+      - code: "7604.29.99"
+        description: "Barras y perfiles de aluminio aleado"
+        requires_notice: true
+        rule_reference: "DOF 05/02/2024 - Aviso automático aluminio"
+        comments: "Perfiles extruidos cubiertos por el aviso."
+      - code: "7610.90.99"
+        description: "Las demás construcciones y partes de aluminio"
+        requires_notice: false
+        rule_reference: "N/A"
+        comments: "Partes estructurales diversas no listadas."
+  - key: productos_quimicos
+    name: "Productos Químicos Sensibles"
+    sector: "Químicos"
+    description: "Intermediarios y compuestos químicos vigilados por la autoridad."
+    notice_type: "Aviso automático de importación de químicos controlados"
+    notes: "Aplicable a sustancias sujetas a vigilancia comercial."
+    hts_entries:
+      - code: "2933.71.01"
+        description: "6,7-Dihidro-1,4-dioxino[2,3-g]quinazolin-4-ona (trimetrexato)"
+        requires_notice: true
+        rule_reference: "DOF 15/11/2021 - Aviso automático químicos"
+        comments: "Sustancia controlada utilizada en farmacéutica."
+      - code: "2933.79.99"
+        description: "Los demás lactamas"
+        requires_notice: true
+        rule_reference: "DOF 15/11/2021 - Aviso automático químicos"
+        comments: "Incluidas por su potencial uso dual."
+      - code: "2905.43.01"
+        description: "Manitol"
+        requires_notice: false
+        rule_reference: "N/A"
+        comments: "Alcohol de azúcar sin restricciones de aviso automático."
