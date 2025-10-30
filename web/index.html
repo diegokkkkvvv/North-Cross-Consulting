@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Validador de Aviso Automático - North Cross Consulting</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="container">
+        <h1>Validador de aviso automático</h1>
+        <p>
+          Selecciona la industria y la fracción arancelaria (TIGIE/HTS) para
+          conocer si requiere el aviso automático ante la Secretaría de
+          Economía.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Consulta rápida</h2>
+        <form id="lookup-form" class="form-grid" autocomplete="off">
+          <label class="form-field">
+            <span>Industria</span>
+            <select id="industry-select" required>
+              <option value="" disabled selected>Selecciona una industria</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Fracción arancelaria</span>
+            <input
+              id="hts-input"
+              name="hts"
+              list="hts-options"
+              placeholder="Ej. 7208.51.01"
+              autocomplete="off"
+            />
+            <datalist id="hts-options"></datalist>
+          </label>
+          <div class="form-field full-width">
+            <button type="submit" class="primary">Consultar</button>
+            <button type="button" id="clear-btn" class="secondary">Limpiar</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="industry-summary" class="card" hidden>
+        <h2>Industria seleccionada</h2>
+        <dl class="summary">
+          <div>
+            <dt>Industria</dt>
+            <dd id="summary-industry"></dd>
+          </div>
+          <div>
+            <dt>Sector</dt>
+            <dd id="summary-sector"></dd>
+          </div>
+          <div>
+            <dt>Tipo de aviso</dt>
+            <dd id="summary-notice"></dd>
+          </div>
+          <div>
+            <dt>Notas</dt>
+            <dd id="summary-notes"></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="result-card" class="card" hidden>
+        <h2>Resultado</h2>
+        <div id="result-message" class="result-message"></div>
+        <div id="result-details" class="result-details"></div>
+      </section>
+
+      <section id="industry-table" class="card" hidden>
+        <div class="section-header">
+          <h2>Fracciones vinculadas</h2>
+          <button type="button" id="export-json" class="tertiary">
+            Descargar datos (JSON)
+          </button>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Fracción</th>
+                <th>Descripción</th>
+                <th>¿Requiere aviso?</th>
+                <th>Fundamento</th>
+              </tr>
+            </thead>
+            <tbody id="industry-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card info-card">
+        <h2>Cómo integrarlo en tu sitio</h2>
+        <ol>
+          <li>
+            Copia la carpeta <code>web/</code> dentro de tu proyecto o publícala
+            como un sitio estático.
+          </li>
+          <li>
+            Asegúrate de exponer el archivo
+            <code>output/master_sheet.json</code> (o el generado por el script)
+            en la misma ruta relativa.
+          </li>
+          <li>
+            El formulario puede integrarse como componente embebido usando un
+            <code>&lt;iframe&gt;</code> o migrando el HTML/CSS/JS a tu framework
+            preferido.
+          </li>
+        </ol>
+        <p>
+          El botón "Descargar datos" permite a tu equipo inspeccionar rápidamente
+          las fracciones y reglas vigentes cargadas en el catálogo.
+        </p>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <small>
+          Fuente: DOF - Avisos automáticos de importación. Catálogo compilado por
+          North Cross Consulting.
+        </small>
+      </div>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

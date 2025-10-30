@@ -162,6 +162,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="No generar archivo JSON",
     )
     parser.add_argument(
+        "--web-data-dir",
+        type=Path,
+        default=Path("web/data"),
+        help="Directorio donde se copiará el JSON para la interfaz web",
+    )
+    parser.add_argument(
+        "--no-web-data",
+        action="store_true",
+        help="No copiar el JSON al directorio de la interfaz web",
+    )
+    parser.add_argument(
         "--no-csv",
         action="store_true",
         help="No generar archivo CSV",
@@ -185,8 +196,17 @@ def main(argv: Optional[List[str]] = None) -> int:
             )
         write_excel(entries, args.output_dir / "master_sheet.xlsx")
 
+    json_payload = None
     if not args.no_json:
         write_json(entries, args.output_dir / "master_sheet.json")
+        json_payload = entries
+
+    if not args.no_web_data and args.web_data_dir:
+        target = args.web_data_dir / "master_sheet.json"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if json_payload is None:
+            json_payload = entries
+        write_json(json_payload, target)
 
     return 0
 

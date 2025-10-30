@@ -7,6 +7,7 @@ Herramienta para generar una "master sheet" que vincule sectores industriales pr
 - `config/dof_aviso_rules.yaml`: reglas base por industria, incluyendo descripciones de fracciones arancelarias y si requieren aviso.
 - `scripts/generate_master_sheet.py`: script en Python que lee el archivo YAML y genera salidas en CSV, XLSX y JSON.
 - `output/`: carpeta donde se escriben los archivos generados.
+- `web/`: interfaz web lista para integrar en tu sitio (HTML, CSS y JS).
 
 ## Requisitos
 
@@ -18,7 +19,7 @@ Herramienta para generar una "master sheet" que vincule sectores industriales pr
 Para instalar las dependencias mínimas:
 
 ```bash
-pip install pyyaml pandas openpyxl
+pip install -r requirements.txt
 ```
 
 ## Uso
@@ -41,14 +42,24 @@ Puedes personalizar rutas y formatos:
 python scripts/generate_master_sheet.py \
   --rules config/dof_aviso_rules.yaml \
   --output-dir output \
-  --no-json
+  --no-json \
+  --web-data-dir web/data
 ```
+
+Por defecto el script copiará el JSON actualizado a `web/data/master_sheet.json`
+para que la interfaz web siempre consuma la última información. Usa
+`--no-web-data` si no deseas sincronizar ese archivo.
 
 ## Integración web
 
-1. Ejecuta el script para generar los archivos actualizados.
-2. Integra `master_sheet.csv` (o el formato que prefieras) con tu backend o frontend web para construir selectores de industria y fracción arancelaria.
-3. Filtra por la combinación seleccionada para mostrar si requiere aviso automático y el fundamento correspondiente.
+1. Ejecuta `python scripts/generate_master_sheet.py` para actualizar los datos
+   (esto también refresca `web/data/master_sheet.json`).
+2. Sirve la carpeta `web/` como un sitio estático (por ejemplo con GitHub Pages,
+   Vercel o tu propio servidor). El HTML cargará automáticamente el catálogo.
+3. Opcional: embebe el formulario dentro de tu página existente, reutilizando el
+   HTML/CSS/JS provisto y apuntando a tu propio endpoint JSON si así lo deseas.
+4. Los usuarios pueden seleccionar una industria, escribir o elegir la fracción
+   arancelaria y recibir el resultado inmediato sobre el aviso automático.
 
 ## Extensión de las reglas
 
